@@ -1,0 +1,272 @@
+/* === Светлая тема — Fresh Mint === */
+
+/* Глобальные настройки */
+* {
+    font-family: "Segoe UI", "SF Pro Display", "Helvetica Neue", sans-serif;
+    font-size: 14px;
+}
+
+/* Главное окно */
+QMainWindow, QWidget#root {
+    background-color: #f0f4f8;
+}
+
+/* Сайдбар */
+QWidget#sidebar {
+    background-color: #ffffff;
+    border-right: 1px solid #dce3ea;
+}
+
+/* Заголовок сайдбара */
+QLabel#sidebarTitle {
+    color: #1a6b5e;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 20px 18px 12px 18px;
+}
+
+/* Кнопки навигации */
+QPushButton#navButton {
+    background-color: transparent;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 18px;
+    text-align: left;
+    color: #4a5a6a;
+    font-weight: 500;
+}
+
+QPushButton#navButton:hover {
+    background-color: #e8f5f1;
+    color: #1a6b5e;
+}
+
+QPushButton#navButton:checked {
+    background-color: #e0f2ee;
+    color: #0d9488;
+    border-left: 3px solid #14b8a6;
+    border-radius: 0 8px 8px 0;
+}
+
+/* Кнопка переключения темы */
+QPushButton#themeButton {
+    background-color: #f0f4f8;
+    border: 1px solid #dce3ea;
+    border-radius: 8px;
+    padding: 10px 16px;
+    color: #4a5a6a;
+    font-weight: 500;
+}
+
+QPushButton#themeButton:hover {
+    background-color: #e0f2ee;
+    border-color: #14b8a6;
+    color: #0d9488;
+}
+
+/* Карточка */
+QWidget#card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+/* Заголовок карточки */
+QLabel#cardTitle {
+    color: #1a2b3a;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 8px 0 4px 0;
+}
+
+/* Поля ввода */
+QLineEdit {
+    background-color: #f8fafc;
+    border: 1px solid #dce3ea;
+    border-radius: 8px;
+    padding: 10px 14px;
+    color: #1a2b3a;
+    selection-background-color: #14b8a6;
+    selection-color: #ffffff;
+}
+
+QLineEdit:focus {
+    border: 2px solid #14b8a6;
+    background-color: #ffffff;
+    padding: 9px 13px;
+}
+
+QLineEdit::placeholder {
+    color: #94a3b8;
+}
+
+/* Выпадающий список */
+QComboBox {
+    background-color: #f8fafc;
+    border: 1px solid #dce3ea;
+    border-radius: 8px;
+    padding: 10px 14px;
+    color: #1a2b3a;
+}
+
+QComboBox:hover {
+    border-color: #14b8a6;
+}
+
+QComboBox::drop-down {
+    border: none;
+    width: 30px;
+}
+
+QComboBox::down-arrow {
+    image: none;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #4a5a6a;
+    margin-right: 10px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #ffffff;
+    border: 1px solid #dce3ea;
+    border-radius: 8px;
+    selection-background-color: #e0f2ee;
+    selection-color: #0d9488;
+    padding: 4px;
+}
+
+/* Чекбокс */
+QCheckBox {
+    color: #4a5a6a;
+    spacing: 8px;
+    font-size: 13px;
+}
+
+QCheckBox::indicator {
+    width: 18px;
+    height: 18px;
+    border-radius: 5px;
+    border: 2px solid #dce3ea;
+    background-color: #f8fafc;
+}
+
+QCheckBox::indicator:hover {
+    border-color: #14b8a6;
+}
+
+QCheckBox::indicator:checked {
+    background-color: #14b8a6;
+    border-color: #14b8a6;
+    border-radius: 5px;
+}
+
+/* Основная кнопка */
+QPushButton#primaryButton {
+    background-color: #0d9488;
+    border: none;
+    border-radius: 8px;
+    padding: 11px 24px;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+QPushButton#primaryButton:hover {
+    background-color: #14b8a6;
+}
+
+QPushButton#primaryButton:pressed {
+    background-color: #0a7768;
+}
+
+/* Вторичная кнопка */
+QPushButton#secondaryButton {
+    background-color: transparent;
+    border: 1px solid #dce3ea;
+    border-radius: 8px;
+    padding: 11px 24px;
+    color: #4a5a6a;
+    font-weight: 500;
+}
+
+QPushButton#secondaryButton:hover {
+    border-color: #14b8a6;
+    color: #0d9488;
+    background-color: #e8f5f1;
+}
+
+QPushButton#secondaryButton:pressed {
+    background-color: #d0ede7;
+}
+
+/* Прогресс-бар */
+QProgressBar {
+    background-color: #e2e8f0;
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    color: #4a5a6a;
+    height: 8px;
+    font-size: 11px;
+}
+
+QProgressBar::chunk {
+    background-color: #14b8a6;
+    border-radius: 4px;
+}
+
+/* Скроллбар */
+QScrollBar:vertical {
+    background: transparent;
+    width: 8px;
+    margin: 0;
+}
+
+QScrollBar::handle:vertical {
+    background-color: #cbd5e1;
+    border-radius: 4px;
+    min-height: 30px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background-color: #94a3b8;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 0;
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: transparent;
+}
+
+QScrollBar:horizontal {
+    background: transparent;
+    height: 8px;
+    margin: 0;
+}
+
+QScrollBar::handle:horizontal {
+    background-color: #cbd5e1;
+    border-radius: 4px;
+    min-width: 30px;
+}
+
+QScrollBar::handle:horizontal:hover {
+    background-color: #94a3b8;
+}
+
+QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {
+    width: 0;
+}
+
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
+    background: transparent;
+}
+
+/* Подписи к полям */
+QLabel#fieldLabel {
+    color: #4a5a6a;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 2px 0;
+}

@@ -1,0 +1,218 @@
+/* ===== Modern Light Theme ===== */
+
+* {
+    font-family: "Segoe UI", "SF Pro Display", sans-serif;
+    font-size: 14px;
+}
+
+/* ── Сайдбар ── */
+#sidebar {
+    background-color: #ffffff;
+    border-right: 1px solid #e8e8e8;
+}
+
+#sidebarTitle {
+    font-size: 18px;
+    font-weight: bold;
+    color: #1a1a1a;
+    padding-bottom: 4px;
+}
+
+#navButton {
+    text-align: left;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 8px;
+    background-color: transparent;
+    color: #3a3a3a;
+    font-weight: 500;
+}
+
+#navButton:hover {
+    background-color: #f5f5f5;
+    color: #1a1a1a;
+}
+
+#navButton:checked {
+    background-color: #fff1f0;
+    color: #cf1322;
+    border-left: 3px solid #ff4d4f;
+    padding-left: 11px;
+}
+
+#themeButton {
+    padding: 10px 14px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #fafafa;
+    color: #595959;
+    font-weight: 500;
+}
+
+#themeButton:hover {
+    background-color: #f0f0f0;
+    border-color: #d0d0d0;
+}
+
+/* ── Контент ── */
+#content {
+    background-color: #f5f5f5;
+}
+
+#card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e8e8e8;
+}
+
+#cardTitle {
+    font-size: 20px;
+    font-weight: bold;
+    color: #1a1a1a;
+    padding-bottom: 4px;
+}
+
+#fieldLabel {
+    color: #595959;
+    font-size: 13px;
+    font-weight: 500;
+    padding-top: 6px;
+}
+
+/* ── Поля ввода ── */
+#inputField {
+    padding: 9px 12px;
+    border: 1px solid #d9d9d9;
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #1a1a1a;
+    selection-background-color: #ff4d4f;
+}
+
+#inputField:focus {
+    border: 1px solid #ff4d4f;
+}
+
+#inputField::placeholder {
+    color: #bfbfbf;
+}
+
+/* ── Выпадающий список ── */
+#comboBox {
+    padding: 8px 12px;
+    border: 1px solid #d9d9d9;
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #1a1a1a;
+}
+
+#comboBox:hover {
+    border-color: #ff4d4f;
+}
+
+#comboBox::drop-down {
+    border: none;
+    width: 24px;
+}
+
+#comboBox QAbstractItemView {
+    border: 1px solid #d9d9d9;
+    border-radius: 8px;
+    background-color: #ffffff;
+    selection-background-color: #fff1f0;
+    selection-color: #cf1322;
+    outline: none;
+}
+
+/* ── Чекбокс ── */
+#checkBox {
+    color: #595959;
+    spacing: 8px;
+    padding-top: 6px;
+}
+
+#checkBox::indicator {
+    width: 18px;
+    height: 18px;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    background-color: #ffffff;
+}
+
+#checkBox::indicator:checked {
+    background-color: #ff4d4f;
+    border-color: #ff4d4f;
+    image: none;
+}
+
+/* ── Кнопки ── */
+#primaryButton {
+    padding: 10px 22px;
+    border: none;
+    border-radius: 8px;
+    background-color: #ff4d4f;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+#primaryButton:hover {
+    background-color: #ff7875;
+}
+
+#primaryButton:pressed {
+    background-color: #d9363e;
+}
+
+#secondaryButton {
+    padding: 10px 22px;
+    border: 1px solid #d9d9d9;
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #595959;
+    font-weight: 500;
+}
+
+#secondaryButton:hover {
+    border-color: #ff4d4f;
+    color: #ff4d4f;
+}
+
+/* ── Прогресс-бар ── */
+#progressBar {
+    border: none;
+    border-radius: 6px;
+    background-color: #e8e8e8;
+    height: 8px;
+    text-align: center;
+}
+
+#progressBar::chunk {
+    border-radius: 6px;
+    background-color: #ff4d4f;
+}
+
+/* ── Скроллбар ── */
+QScrollBar:vertical {
+    width: 8px;
+    background: transparent;
+    margin: 0;
+}
+
+QScrollBar::handle:vertical {
+    background-color: #c0c0c0;
+    border-radius: 4px;
+    min-height: 30px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background-color: #a0a0a0;
+}
+
+QScrollBar::add-line, QScrollBar::sub-line {
+    height: 0;
+    width: 0;
+}
+
+QScrollBar::add-page, QScrollBar::sub-page {
+    background: transparent;
+}
