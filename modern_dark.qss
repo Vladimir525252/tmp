@@ -55,11 +55,66 @@ QComboBox {
     border: 1px solid #475569;
     border-radius: 8px;
     padding: 6px 12px;
+    padding-right: 28px;
     color: #F1F5F9;
     selection-background-color: #3B82F6;
 }
+QComboBox:hover {
+    border-color: #60A5FA;
+}
 QComboBox:focus {
     border: 1px solid #60A5FA;
+}
+QComboBox::drop-down {
+    border: none;
+    width: 24px;
+}
+QComboBox::down-arrow {
+    image: none;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #94A3B8;
+    margin-right: 10px;
+}
+QComboBox::down-arrow:hover {
+    border-top-color: #F1F5F9;
+}
+QComboBox QAbstractItemView {
+    background-color: #1F2937;
+    color: #F1F5F9;
+    border: 1px solid #475569;
+    border-radius: 8px;
+    selection-background-color: #3B82F6;
+    selection-color: #FFFFFF;
+    outline: none;
+    padding: 4px;
+}
+
+/* new */
+/* Выпадающий список QComboBox */
+QComboBox QAbstractItemView {
+    background-color: #1E293B;
+    color: #F1F5F9;
+    border: 1px solid #475569;
+    border-radius: 8px;
+    padding: 4px;
+    outline: none;
+    selection-background-color: #3B82F6;
+    selection-color: #FFFFFF;
+}
+QComboBox QAbstractItemView::item {
+    min-height: 28px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin: 2px 2px;
+}
+QComboBox QAbstractItemView::item:hover {
+    background-color: rgba(59, 130, 246, 0.2);
+    color: #FFFFFF;
+}
+QComboBox QAbstractItemView::item:selected {
+    background-color: #3B82F6;
+    color: #FFFFFF;
 }
 
 QCheckBox {
@@ -83,13 +138,20 @@ QPushButton#primaryButton {
     border: none;
     border-radius: 8px;
     padding: 8px 16px;
-    font-weight: 500;
+    font-weight: 600;
 }
 QPushButton#primaryButton:hover {
     background-color: #2563EB;
 }
 QPushButton#primaryButton:pressed {
     background-color: #1D4ED8;
+}
+QPushButton#primaryButton:disabled {
+    background-color: #334155;
+    color: #64748B;
+}
+QPushButton#primaryButton:focus {
+    border: 2px solid #60A5FA;
 }
 
 QPushButton#secondaryButton {
@@ -103,6 +165,13 @@ QPushButton#secondaryButton {
 QPushButton#secondaryButton:hover {
     background-color: rgba(255,255,255,0.05);
     border-color: #94A3B8;
+}
+QPushButton#secondaryButton:pressed {
+    background-color: rgba(255,255,255,0.1);
+}
+QPushButton#secondaryButton:disabled {
+    color: #64748B;
+    border-color: #334155;
 }
 
 QProgressBar {

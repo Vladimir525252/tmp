@@ -6,6 +6,7 @@ from PyQt5.QtWidgets import (
     QComboBox, QCheckBox, QFrame, QSizePolicy
 )
 from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QIcon
 from screeninfo import get_monitors
 import data
 
@@ -46,6 +47,9 @@ class RegistrationWindow(QWidget):
     def set_ui(self):
         self.setWindowTitle("Авторизация")
         self.setFixedSize(int(WIDTH * 0.33), int(HEIGHT * 0.7))  # -> проверить размеры
+
+        icon = QIcon('icon.jpg')
+        self.setWindowIcon(icon)
 
         self.root = QHBoxLayout()
         self.root.setContentsMargins(0, 0, 0, 0)
@@ -293,6 +297,7 @@ class RegistrationWindow(QWidget):
             data.state = "log"
             data.name = self.input_name.text()
             data.psw = self.input_psw.text()
+        self.close()  # чтобы далее открыть основное окно
 
     def on_change_clicked(self):
         clear_layout(self.root)

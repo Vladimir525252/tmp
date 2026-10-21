@@ -61,11 +61,66 @@ QComboBox {
     border: 1px solid #D1D5DB;
     border-radius: 8px;
     padding: 6px 12px;
+    padding-right: 28px;
     color: #111827;
     selection-background-color: #3B82F6;
 }
+QComboBox:hover {
+    border-color: #3B82F6;
+}
 QComboBox:focus {
     border: 1px solid #3B82F6;
+}
+QComboBox::drop-down {
+    border: none;
+    width: 24px;
+}
+QComboBox::down-arrow {
+    image: none;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #6B7280;
+    margin-right: 10px;
+}
+QComboBox::down-arrow:hover {
+    border-top-color: #111827;
+}
+QComboBox QAbstractItemView {
+    background-color: #FFFFFF;
+    color: #111827;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+    selection-background-color: #3B82F6;
+    selection-color: #FFFFFF;
+    outline: none;
+    padding: 4px;
+}
+
+/* new */
+/* Выпадающий список QComboBox */
+QComboBox QAbstractItemView {
+    background-color: #FFFFFF;
+    color: #111827;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+    padding: 4px;
+    outline: none;
+    selection-background-color: #3B82F6;
+    selection-color: #FFFFFF;
+}
+QComboBox QAbstractItemView::item {
+    min-height: 28px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin: 2px 2px;
+}
+QComboBox QAbstractItemView::item:hover {
+    background-color: #E5F3FF;
+    color: #1E40AF;
+}
+QComboBox QAbstractItemView::item:selected {
+    background-color: #3B82F6;
+    color: #FFFFFF;
 }
 
 /* Чекбокс */
@@ -91,13 +146,20 @@ QPushButton#primaryButton {
     border: none;
     border-radius: 8px;
     padding: 8px 16px;
-    font-weight: 500;
+    font-weight: 600;
 }
 QPushButton#primaryButton:hover {
     background-color: #2563EB;
 }
 QPushButton#primaryButton:pressed {
     background-color: #1D4ED8;
+}
+QPushButton#primaryButton:disabled {
+    background-color: #E5E7EB;
+    color: #9CA3AF;
+}
+QPushButton#primaryButton:focus {
+    border: 2px solid #93C5FD;
 }
 
 /* Вторичные кнопки — спокойные */
@@ -112,6 +174,13 @@ QPushButton#secondaryButton {
 QPushButton#secondaryButton:hover {
     background-color: #F9FAFB;
     border-color: #9CA3AF;
+}
+QPushButton#secondaryButton:pressed {
+    background-color: #E5E7EB;
+}
+QPushButton#secondaryButton:disabled {
+    color: #9CA3AF;
+    border-color: #E5E7EB;
 }
 
 /* Прогресс-бар — стиль Windows 11 ProgressBar */

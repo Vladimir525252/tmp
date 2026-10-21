@@ -8,8 +8,9 @@ from PyQt5.QtCore import Qt
 
 from auth import RegistrationWindow
 from app import MainWindow
-# from task_manager import *
-# from marks_stats import *
+
+"""from task_manager import TaskManager
+from marks_stats import *"""  # вероятно, не понадобится, так как будет использовано в app
 # пока закомментировано, потому что классы еще не реализованы
 # основной файл, который запускает само приложение
 from screeninfo import get_monitors

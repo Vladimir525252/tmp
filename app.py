@@ -7,6 +7,8 @@ from PyQt5.QtWidgets import (
 )
 from PyQt5.QtCore import Qt
 from screeninfo import get_monitors
+from task_manager import TaskManager
+from marks_stats import *  # пока классы отсутствуют
 
 HEIGHT, WIDTH = screeninfo.get_monitors()[0].height, screeninfo.get_monitors()[0].width
 
@@ -22,7 +24,8 @@ class MainWindow(QWidget):
     def __init__(self):
         super().__init__()
         self.dark = False
-        self.light_qss = load_qss("modern_light.qss")
+        self.light_qss = load_qss("modern_light.qss"0
+        )
         self.dark_qss = load_qss("modern_dark.qss")
         self.setStyleSheet(self.light_qss)
         self.init_ui()

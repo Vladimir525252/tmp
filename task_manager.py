@@ -32,10 +32,8 @@ class Task:
         self.notification_sent = notification_sent
 
     def to_dict(self):
-        """
-        Преобразует объект задачи в словарь для сериализации в JSON.
-        Возвращает: словарь с данными задачи
-        """
+        """Преобразует объект задачи в словарь для сериализации в JSON.
+        Возвращает: словарь с данными задачи"""
         return {
             'title': self.title,
             'priority': self.priority,
@@ -49,12 +47,10 @@ class Task:
 
     @classmethod
     def from_dict(cls, data):
-        """
-        Создает объект задачи из словаря (при загрузке из JSON).
+        """Создает объект задачи из словаря (при загрузке из JSON).
         Args:
             data: словарь с данными задачи
-        Возвращает: объект Task
-        """
+        Возвращает объект Task"""
         task = cls(data['title'], data['priority'], data['category'], data['completed'])
         task.created_date = data['created_date']
         task.completed_date = data['completed_date']
@@ -64,10 +60,8 @@ class Task:
 
 
 class NotificationDialog(QDialog):
-    """
-    Диалоговое окно для уведомления о задаче.
-    Всегда поверх всех окон, без кнопки свернуть.
-    """
+    """Диалоговое окно для уведомления о задаче.
+    Всегда поверх всех окон, без кнопки свернуть."""
 
     def __init__(self, task_title, parent=None):
         super().__init__(parent)
@@ -113,21 +107,19 @@ class NotificationDialog(QDialog):
         self.move(x, y)
 
     def snooze(self):
-        """Отложить уведомление на 5 минут"""
+        # Отложить уведомление на 5 минут
         self.done(1)  # Возвращаем код 1 для отложенного уведомления
 
     def showEvent(self, event):
-        """Переопределяем показ окна чтобы гарантировать позиционирование поверх всех"""
+        # Переопределяем показ окна чтобы гарантировать позиционирование поверх всех
         super().showEvent(event)
         self.activateWindow()
         self.raise_()
 
 
 class MplCanvas(FigureCanvas):
-    """
-    Кастомный виджет для отображения графиков matplotlib в PyQt.
-    Наследуется от FigureCanvas для интеграции с Qt.
-    """
+    """Кастомный виджет для отображения графиков matplotlib в PyQt.
+    Наследуется от FigureCanvas для интеграции с Qt."""
 
     def __init__(self, parent=None, width=5, height=4, dpi=100):
         self.fig = Figure(figsize=(width, height), dpi=dpi)
@@ -136,10 +128,8 @@ class MplCanvas(FigureCanvas):
 
 
 class AnalyticsTab(QWidget):
-    """
-    Вкладка с аналитикой и графиками.
-    Отображает статистику по задачам в виде диаграмм.
-    """
+    """Вкладка с аналитикой и графиками.
+    Отображает статистику по задачам в виде диаграмм."""
 
     def __init__(self, tasks):
         super().__init__()
@@ -148,7 +138,7 @@ class AnalyticsTab(QWidget):
         self.update_charts()
 
     def initUI(self):
-        """Инициализация пользовательского интерфейса вкладки аналитики"""
+        # Инициализация пользовательского интерфейса вкладки аналитики
         layout = QVBoxLayout()
 
         # График выполненных задач по дням
@@ -169,13 +159,13 @@ class AnalyticsTab(QWidget):
         self.setLayout(layout)
 
     def update_charts(self):
-        """Обновление всех графиков аналитики"""
+        # Обновление всех графиков аналитики
         self.update_daily_completion_chart()
         self.update_priority_chart()
         self.update_category_chart()
 
     def update_daily_completion_chart(self):
-        """Обновление графика выполненных задач по дням"""
+        # Обновление графика выполненных задач по дням
         # Фильтруем только выполненные задачи
         completed_tasks = [task for task in self.tasks if task.completed]
         dates = {}  # Словарь для подсчета задач по датам
@@ -195,7 +185,7 @@ class AnalyticsTab(QWidget):
             self.canvas1.draw()
 
     def update_priority_chart(self):
-        """Обновление круговой диаграммы распределения задач по приоритетам"""
+        # Обновление круговой диаграммы распределения задач по приоритетам
         priorities = {}
         # Считаем количество задач для каждого приоритета
         for task in self.tasks:
@@ -208,7 +198,7 @@ class AnalyticsTab(QWidget):
         self.canvas2.draw()
 
     def update_category_chart(self):
-        """Обновление графика распределения задач по категориям"""
+        # Обновление графика распределения задач по категориям
         categories = {}
         # Считаем количество задач для каждой категории
         for task in self.tasks:
@@ -224,10 +214,8 @@ class AnalyticsTab(QWidget):
 
 
 class TaskManager(QMainWindow):
-    """
-    Главное окно приложения - менеджер задач.
-    Содержит интерфейс для управления задачами и отображения аналитики.
-    """
+    """Главное окно приложения - менеджер задач.
+    Содержит интерфейс для управления задачами и отображения аналитики."""
 
     def __init__(self):
         super().__init__()
@@ -243,7 +231,7 @@ class TaskManager(QMainWindow):
         self.initUI()  # Инициализация интерфейса
 
     def setup_tray_icon(self):
-        """Настройка иконки в системном трее"""
+        # Настройка иконки в системном трее
         if QSystemTrayIcon.isSystemTrayAvailable():
             self.tray_icon = QSystemTrayIcon(self)
             self.tray_icon.setIcon(QIcon('icon.ico'))
@@ -263,19 +251,19 @@ class TaskManager(QMainWindow):
             self.tray_icon.show()
 
     def tray_icon_activated(self, reason):
-        """Обработка активации иконки в трее"""
+        # Обработка активации иконки в трее
         if reason == QSystemTrayIcon.DoubleClick:
             self.show()
             self.activateWindow()
 
     def quit_application(self):
-        """Корректный выход из приложения"""
+        # Корректный выход из приложения
         self.save_tasks()
         QApplication.quit()
 
     def initUI(self):
-        """Инициализация пользовательского интерфейса главного окна"""
-        self.setWindowTitle('TaskAnalyst - Умный менеджер задач v1.2')
+        # Инициализация пользовательского интерфейса главного окна
+        self.setWindowTitle('TaskAnalyst - Умный менеджер задач v4.1')
         self.setGeometry(100, 100, 1000, 700)  # Позиция и размер окна
         icon = QIcon('icon.ico')
         self.setWindowIcon(icon)
@@ -374,11 +362,11 @@ class TaskManager(QMainWindow):
         self.update_task_list()  # Первоначальное обновление списка задач
 
     def toggle_notification_widget(self):
-        """Включение/выключения виджета уведомления"""
+        # Включение/выключения виджета уведомления
         self.notification_datetime.setEnabled(self.notification_checkbox.isChecked())
 
     def add_task(self):
-        """Добавление новой задачи"""
+        # Добавление новой задачи
         title = self.task_input.text().strip()
         if title:  # Проверяем, что поле не пустое
             priority = self.priority_combo.currentText()
@@ -406,7 +394,7 @@ class TaskManager(QMainWindow):
             self.save_tasks()  # Сохраняем изменения в файл
 
     def toggle_task(self, item):
-        """Изменение статуса выполнения задачи (выполнена/не выполнена)"""
+        # Изменение статуса выполнения задачи (выполнена/не выполнена)
         index = self.task_list.row(item)
         if 0 <= index < len(self.tasks):
             task = self.tasks[index]
@@ -418,7 +406,7 @@ class TaskManager(QMainWindow):
             self.analytics_tab.update_charts()  # Обновляем графики
 
     def delete_task(self):
-        """Удаление выбранной задачи"""
+        # Удаление выбранной задачи
         current_row = self.task_list.currentRow()
         if current_row >= 0:
             self.tasks.pop(current_row)
@@ -427,14 +415,14 @@ class TaskManager(QMainWindow):
             self.analytics_tab.update_charts()
 
     def clear_completed(self):
-        """Удаление всех выполненных задач"""
+        # Удаление всех выполненных задач
         self.tasks = [task for task in self.tasks if not task.completed]
         self.update_task_list()
         self.save_tasks()
         self.analytics_tab.update_charts()
 
     def manage_notifications(self):
-        """Управление уведомлениями для выбранной задачи"""
+        # Управление уведомлениями для выбранной задачи
         current_row = self.task_list.currentRow()
         if current_row >= 0:
             task = self.tasks[current_row]
@@ -480,7 +468,7 @@ class TaskManager(QMainWindow):
             dialog.exec_()
 
     def save_notification(self, task, datetime_edit, dialog):
-        """Сохранение уведомления для задачи"""
+        # Сохранение уведомления для задачи
         task.notification_datetime = datetime_edit.dateTime().toString("dd-MM-yyyy HH:mm")
         task.notification_sent = False
         self.update_task_list()
@@ -488,7 +476,7 @@ class TaskManager(QMainWindow):
         dialog.accept()
 
     def remove_notification(self, task, dialog):
-        """Удаление уведомления для задачи"""
+        # Удаление уведомления для задачи
         task.notification_datetime = None
         task.notification_sent = False
         self.update_task_list()
@@ -496,7 +484,7 @@ class TaskManager(QMainWindow):
         dialog.accept()
 
     def update_task_list(self):
-        """Обновление отображения списка задач"""
+        # Обновление отображения списка задач
         self.task_list.clear()
         for task in self.tasks:
             # Символы для отображения статуса: ✓ - выполнено, □ - не выполнено
@@ -506,7 +494,7 @@ class TaskManager(QMainWindow):
             self.task_list.addItem(item_text)
 
     def check_notifications(self):
-        """Проверка уведомлений для всех задач"""
+        # Проверка уведомлений для всех задач
         current_datetime = datetime.datetime.now()
 
         for task in self.tasks:
@@ -529,7 +517,7 @@ class TaskManager(QMainWindow):
                     print(f"Ошибка в формате даты у задачи '{task.title}': {e}")
 
     def show_notification(self, task):
-        """Показ уведомления о задаче"""
+        # Показ уведомления о задаче
         # Создаем и показываем модальное окно уведомления
         dialog = NotificationDialog(task.title)
         result = dialog.exec_()
@@ -552,13 +540,13 @@ class TaskManager(QMainWindow):
             )
 
     def save_tasks(self):
-        """Сохранение задач в JSON файл"""
+        # Сохранение задач в JSON файл
         data = [task.to_dict() for task in self.tasks]
         with open('tasks.json', 'w', encoding='utf-8') as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
 
     def load_tasks(self):
-        """Загрузка задач из JSON файла"""
+        # Загрузка задач из JSON файла
         try:
             with open('tasks.json', 'r', encoding='utf-8') as f:
                 data = json.load(f)
@@ -568,10 +556,8 @@ class TaskManager(QMainWindow):
             self.tasks = []
 
     def closeEvent(self, event):
-        """
-        Обработчик события закрытия окна.
-        Автоматически сохраняет задачи перед выходом.
-        """
+        """Обработчик события закрытия окна.
+        Автоматически сохраняет задачи перед выходом."""
         # Не закрываем приложение, а скрываем в трей
         if self.tray_icon and self.tray_icon.isVisible():
             event.ignore()
@@ -589,14 +575,14 @@ class TaskManager(QMainWindow):
 
 
 def main():
-    """
-    Главная функция приложения.
-    Создает экземпляр QApplication и главного окна, запускает цикл событий.
-    """
+    """Главная функция приложения.
+    Создает экземпляр QApplication и главного окна, запускает цикл событий."""
     app = QApplication(sys.argv)
-    app.setStyle('Macintosh')  # Устанавливаем стиль интерфейса
+    app.setStyle('Fusion')  # Устанавливаем стиль интерфейса
     app.setQuitOnLastWindowClosed(False)  # Не завершать приложение при закрытии окна
-    app.setStyleSheet("QPushButton { border: 2px solid grey; }")
+    # app.setStyleSheet("QPushButton { border: 2px solid grey; }")
+    with open("modern_light.qss", "r", encoding="utf-8") as f:
+        app.setStyleSheet(f.read())
     manager = TaskManager()
     manager.show()
 
